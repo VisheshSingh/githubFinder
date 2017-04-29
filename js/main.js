@@ -22,7 +22,17 @@ $(document).ready(function(){
                 <a target="_blank" class="btn btn-primary btn-block" href="${user.html_url}">View Profile</a>
               </div>
               <div class="col-md-9">
-
+              <span class="label label-default">Public repos: ${user.public_repos}</span>
+              <span class="label label-primary">Public gists: ${user.public_gists}</span>
+              <span class="label label-success">Followers: ${user.followers}</span>
+              <span class="label label-info">Following: ${user.following}</span>
+              <br><br>
+              <ul class="list-group">
+                <li class="list-group-item"><strong>Company:</strong> ${user.company}</li>
+                <li class="list-group-item"><strong>Website/blog:</strong> ${user.blog}</li>
+                <li class="list-group-item"><strong>Location:</strong> ${user.location}</li>
+                <li class="list-group-item"><strong>Member since:</strong> ${user.created_at}</li>
+              </ul
               </div>
             </div>
           </div>
