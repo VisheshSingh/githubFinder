@@ -10,10 +10,35 @@ $(document).ready(function(){
         client_secret:'00c3f9b1543ca6618ebcc614dc2ba3f1e5f2667b'
       }
     }).done(function(user){
+      $.ajax({
+        url:'https://api.github.com/users/'+username+'/repos',
+        data:{
+          client_id:'18fe488831d451f71b6d',
+          client_secret:'00c3f9b1543ca6618ebcc614dc2ba3f1e5f2667b'
+        }
+      }).done(function(repos){
+        $.each(repos, function(index, repo){
+          $('#repos').append(`
+            <div class="well">
+              <div class="row">
+                <div class="col-md-7">
+                  <strong>${repo.name}</strong>
+                </div>
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-2">
+
+                </div>
+              </div>
+            </div>
+          `);
+        });
+      });
       $('#profile').html(`
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">${user.name}</h3>
+            <h2 class="panel-title"><strong>${user.name}</strong></h2>
           </div>
           <div class="panel-body">
             <div class="row">
@@ -32,11 +57,14 @@ $(document).ready(function(){
                 <li class="list-group-item"><strong>Website/blog:</strong> ${user.blog}</li>
                 <li class="list-group-item"><strong>Location:</strong> ${user.location}</li>
                 <li class="list-group-item"><strong>Member since:</strong> ${user.created_at}</li>
-              </ul
+              </ul>
               </div>
             </div>
           </div>
         </div>
+
+        <h2 class="page-header">Latest repos</h2>
+        <div id="repos"></div>
 
       `)
     });
