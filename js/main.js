@@ -14,7 +14,9 @@ $(document).ready(function(){
         url:'https://api.github.com/users/'+username+'/repos',
         data:{
           client_id:'18fe488831d451f71b6d',
-          client_secret:'00c3f9b1543ca6618ebcc614dc2ba3f1e5f2667b'
+          client_secret:'00c3f9b1543ca6618ebcc614dc2ba3f1e5f2667b',
+          sort: 'created: asc',
+          per_page: 5
         }
       }).done(function(repos){
         $.each(repos, function(index, repo){
